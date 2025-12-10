@@ -1,7 +1,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 
-#include "Renderer.h"
+#include "renderer.h"
 
 
 int main() {
