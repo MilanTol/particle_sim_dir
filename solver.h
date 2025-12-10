@@ -33,7 +33,7 @@ public:
 
 private:
     std::vector<Particle> particles;            // declare particles vector
-    sf::Vector2f gravity = {0.0f, 1000.0f};    // set gravity strength
+    sf::Vector2f gravity = {0.0f, 100.0f};    // set gravity strength
     float step_dt = 1.0f/60;                       // declare time_step
     
     float upperbound_x;

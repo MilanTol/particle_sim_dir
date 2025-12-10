@@ -23,7 +23,7 @@ int main() {
 
 
     Solver solver;
-    solver.set_boundary((float)window_height, (float)window_width, 0.0f, 0.0f);
+    solver.set_boundary((float)window_height, (float)window_width, 0., 0.);
     Particle& particle = solver.add_particle({420.0, 420.0}, 10.0);
 
     while (window.isOpen()) {
