@@ -1,5 +1,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <random>
+#include <chrono>
 
 #include "renderer.h"
 #include "solver.h"
@@ -26,12 +28,26 @@ int main() {
     solver.set_boundary((float)window_height, (float)window_width, 0., 0.);
 
     //generate particles at random positions
+    std::mt19937_64 rng; // initialize the random number generator with time-dependent seed
+    uint64_t timeSeed = std::chrono::high_resolution_clock::now().time_since_epoch().count();
+    std::seed_seq ss{uint32_t(timeSeed & 0xffffffff), uint32_t(timeSeed>>32)};
+    rng.seed(ss);
+
+    // initialize a uniform distribution between 0 and 1
+    std::uniform_real_distribution<double> unif(0, 1);
+
     int number_of_particles = 100;
-    for (int i; i<number_of_particles; i++){
-        float rand_x = window_width * rand()/RAND_MAX;
-        float rand_y = window_height *rand()/RAND_MAX;
+    for (int i=0; i<number_of_particles; i++){
+        double rand1 = unif(rng);
+        double rand2 = unif(rng);
+
+        float rand_x = rand1 * window_width;
+        float rand_y = rand2 * window_height;
+
         Particle& particle = solver.add_particle({rand_x, rand_y}, 10.0);
     }
+    
+    Particle& particle = solver.add_particle({420.0, 420.0}, 10.0);
 
     while (window.isOpen()) {
         sf::Event event;
