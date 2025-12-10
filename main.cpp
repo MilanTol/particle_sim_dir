@@ -24,7 +24,14 @@ int main() {
 
     Solver solver;
     solver.set_boundary((float)window_height, (float)window_width, 0., 0.);
-    Particle& particle = solver.add_particle({420.0, 420.0}, 10.0);
+
+    //generate particles at random positions
+    int number_of_particles = 100;
+    for (int i; i<number_of_particles; i++){
+        float rand_x = window_width * rand()/RAND_MAX;
+        float rand_y = window_height *rand()/RAND_MAX;
+        Particle& particle = solver.add_particle({rand_x, rand_y}, 10.0);
+    }
 
     while (window.isOpen()) {
         sf::Event event;
