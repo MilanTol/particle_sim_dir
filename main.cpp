@@ -36,7 +36,7 @@ int main() {
     // initialize a uniform distribution between 0 and 1
     std::uniform_real_distribution<double> unif(0, 1);
 
-    int number_of_particles = 100;
+    int number_of_particles = 1000;
     for (int i=0; i<number_of_particles; i++){
         double rand1 = unif(rng);
         double rand2 = unif(rng);
@@ -61,7 +61,7 @@ int main() {
         // show the rendered frame
         window.display();
 
-        std::cout << solver.calculate_density({420.0, 420.0}) << std::endl;
+        std::cout << solver.calculate_density({120.0, 420.0}) << std::endl;
     }
 
     return 0;

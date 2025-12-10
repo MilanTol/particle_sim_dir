@@ -8,8 +8,8 @@ struct Particle
     sf::Vector2f position;
     sf::Vector2f position_last;
     sf::Vector2f acceleration;
-    float radius = 10.0;
-    float influence_radius = 50.0;
+    float radius = 1.0;
+    float influence_radius = 5.0;
 
     Particle() = default;
     Particle(sf::Vector2f position_, float radius_)
