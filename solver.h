@@ -7,9 +7,9 @@ class Solver {
 public: 
     Solver() = default;
 
-    void add_particle(sf::Vector2f position, float radius){
+    Particle& add_particle(sf::Vector2f position, float radius){
         Particle new_particle = Particle(position, radius);
-        particles.emplace_back(new_particle);
+        return particles.emplace_back(new_particle);
     }
 
     void update(){
@@ -23,8 +23,8 @@ public:
 
 private:
     std::vector<Particle> particles;            // declare particles vector
-    sf::Vector2f gravity = {0.0f, -1000.0f};    // set gravity strength
-    float step_dt = 1/60;                       // declare time_step
+    sf::Vector2f gravity = {0.0f, 1000.0f};    // set gravity strength
+    float step_dt = 1.0f/60;                       // declare time_step
  
     void apply_gravity() {
         for (auto &particle_ : particles)

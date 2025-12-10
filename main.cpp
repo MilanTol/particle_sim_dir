@@ -23,7 +23,7 @@ int main() {
 
 
     Solver solver;
-    solver.add_particle({420.0, 420.0}, 10.0);
+    Particle& particle = solver.add_particle({420.0, 420.0}, 10.0);
 
     while (window.isOpen()) {
         sf::Event event;
