@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "renderer.h"
+#include "solver.h"
 
 
 int main() {
@@ -20,15 +21,19 @@ int main() {
 
     Renderer renderer(window);
 
+
+    Solver solver;
+    solver.add_particle({420.0, 420.0}, 10.0);
+
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed)
                 window.close();
         }
-
+        solver.update();
         window.clear(sf::Color::White);
-        renderer.render();
+        renderer.render(solver);
         // show the rendered frame
         window.display();
     }
