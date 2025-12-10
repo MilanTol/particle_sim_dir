@@ -23,9 +23,9 @@ int main() {
 
     Renderer renderer(window);
 
-
     Solver solver;
     solver.set_boundary((float)window_height, (float)window_width, 0., 0.);
+
 
     //generate particles at random positions
     std::mt19937_64 rng; // initialize the random number generator with time-dependent seed
@@ -47,8 +47,8 @@ int main() {
         Particle& particle = solver.add_particle({rand_x, rand_y}, 10.0);
     }
     
-    Particle& particle = solver.add_particle({420.0, 420.0}, 10.0);
 
+    //load the renderer
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -60,6 +60,8 @@ int main() {
         renderer.render(solver);
         // show the rendered frame
         window.display();
+
+        std::cout << solver.calculate_density({420.0, 420.0}) << std::endl;
     }
 
     return 0;
