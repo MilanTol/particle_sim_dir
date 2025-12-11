@@ -7,6 +7,7 @@
 #include "solver.h"
 
 
+
 int main() {
     //declare window size
     constexpr int32_t window_width = 840;

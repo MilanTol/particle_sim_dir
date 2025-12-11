@@ -7,8 +7,10 @@
 
 class Renderer{  
 
+
 private:
     sf::RenderTarget& target;
+
 
 public:
     Renderer(sf::RenderTarget& target_)
@@ -16,13 +18,15 @@ public:
     {}
 
     void render(Solver& solver){
+
         target.clear(sf::Color::Black);             //Set background color to black]
         sf::CircleShape circle{1.0f};               //declare circle object
         const auto& particles = solver.get_particles();
+        
         for (auto& particle_: particles){
             circle.setPointCount(32);
             circle.setPosition(particle_.position);
-            circle.setScale(10.0f, 10.0f);
+            circle.setScale(particle_.radius, particle_.radius);
             circle.setFillColor(sf::Color::Blue);
             target.draw(circle);
         }       
