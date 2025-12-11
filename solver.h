@@ -4,8 +4,10 @@
 
 class Solver {
 
-public: 
-
 private:
+    std::vector<Particle> particles;
+    float time_step;
+
+public: 
 
 };
