@@ -17,16 +17,16 @@ public:
         : target{target_} //create reference to render object
     {}
 
-    void render(Solver& solver){
+    void render(System& system){
 
         target.clear(sf::Color::Black);             //Set background color to black]
         sf::CircleShape circle{1.0f};               //declare circle object
-        const auto& particles = solver.get_particles();
+        const auto& particles = system.particles;
         
-        for (auto& particle_: particles){
+        for (int i; i < particles.size(); i++){
             circle.setPointCount(32);
-            circle.setPosition(particle_.position);
-            circle.setScale(particle_.radius, particle_.radius);
+            circle.setPosition(particles[i].position);
+            circle.setScale(5.0, 5.0);
             circle.setFillColor(sf::Color::Blue);
             target.draw(circle);
         }       

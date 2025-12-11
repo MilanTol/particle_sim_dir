@@ -6,17 +6,20 @@
 
 class System {
 
-private:
+public:
     
     //store particles in vector
     std::vector<Particle> particles;
     
     //system parameters
-    float time_step = 1/60;
+    float time_step {1/60};
     float system_width;
     float system_height;
 
-public: 
+    System(float width, float height){
+        system_width = width;
+        system_height = height;
+    }
     
     //add a particle to current particles
     void add_particle(sf::Vector2f position, sf::Vector2f velocity){
@@ -28,12 +31,6 @@ public:
         update_particles();
     }
     
-    void set_system_size(float width, float height){
-        system_width = width;
-        system_height = height;
-    }
-
-
 private: //private functions
 
     void update_particles(){
@@ -42,11 +39,21 @@ private: //private functions
         }
     }
 
-    void resolve_boundary(){
+    void resolve_boundary() {
         for (int i; i < particles.size(); i++){
-
-        }
+            if (particles[i].position.x > system_width){
+                particles[i].position.x = particles[i].position.x - system_width;
+            }
+            if (particles[i].position.y > system_height){
+                particles[i].position.y = particles[i].position.y - system_height;
+            }
+            if (particles[i].position.x < system_width){
+                particles[i].position.x = particles[i].position.x + system_width;
+            }
+            if(particles[i].position.y < system_height){
+                particles[i].position.y = particles[i].position.y + system_height;
+            }            
+        }        
     }
-
 
 };
