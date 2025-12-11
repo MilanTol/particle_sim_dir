@@ -45,8 +45,8 @@ int main() {
 
         float rand_x = rand1 * window_width;
         float rand_y = rand2 * window_height;
-        float rand_vx = rand3 * 10;
-        float rand_vy = rand4 * 10;
+        float rand_vx = (2*rand3 - 1) * 100;
+        float rand_vy = (2*rand4 - 1) * 100;
 
         std::cout << rand_vx << std::endl;
 

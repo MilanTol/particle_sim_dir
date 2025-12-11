@@ -23,7 +23,7 @@ public:
         sf::CircleShape circle{1.0f};               //declare circle object
         const auto& particles = system.particles;
         
-        for (int i; i < particles.size(); i++){
+        for (int i=0; i < particles.size(); i++){
             circle.setPointCount(32);
             circle.setPosition(particles[i].position);
             circle.setScale(5.0, 5.0);
