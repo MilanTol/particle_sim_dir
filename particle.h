@@ -10,6 +10,8 @@ struct Particle{
     Vector2f velocity;
     Vector2f acceleration;
 
+    
+
     void update(float dt){
         velocity += acceleration * dt;
         position += velocity * dt;
